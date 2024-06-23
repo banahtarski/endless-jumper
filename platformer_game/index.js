@@ -7,41 +7,9 @@
 
 	const gravity = 0.5
 
-	//klasa za iscrtavanje igraca koja se moze menjati po potrebi
-	class Player {
-		constructor(position) {
-			this.position = position
-			this.velocity = {
-				x: 0,
-				y: 1
-			}
-			this.height = 100
-		}
-
-		draw() { //metoda
-			c.fillStyle = 'red'
-			c.fillRect(this.position.x, this.position.y, 100, 100)
-		}
-
-		update() { //stavljena ovde u slucaju menjanja playera
-			this.draw()
-
-			this.position.x += this.velocity.x
-			this.position.y += this.velocity.y //gravitacija
-
-			if (this.position.y + this.height + this.velocity.y < canvas.height) 
-				this.velocity.y += gravity
-			else this.velocity.y = 0 //efekat blagog udaranja o pod
-		}
-	}
-
 	const player = new Player( {
 		x: 0,
 		y: 0,
-	})
-	const player2 = new Player( {
-		x: 300,
-		y: 100,
 	})
 
 	const keys = {
@@ -62,11 +30,10 @@
 		c.fillRect (0, 0, canvas.width, canvas.height) //pozicioniranje pozadine 
 	
 		player.update()
-		player2.update()
 
-		player.velocity.x = 0
-		if (keys.d.pressed) player.velocity.x = 5
-		else if (keys.a.pressed) player.velocity.x = -5
+		if (keys.d.pressed) player.goRight()
+		else if (keys.a.pressed) player.goLeft()
+		else player.stop()
 	}
 
 	animate()
