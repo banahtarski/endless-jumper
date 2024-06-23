@@ -5,7 +5,7 @@
 	canvas.width = 675
 	canvas.height = 1200
 
-	const gravity = 0.5
+	const gravity = 0.1
 
 	const player = new Player( {
 		x: 0,
@@ -48,7 +48,7 @@
 				keys.a.pressed = true
 				break
 			case 'w':
-				player.velocity.y = -15
+				player.goUp()
 				break
 		}
 	})
@@ -60,9 +60,6 @@
 				break
 			case 'a':
 				keys.a.pressed = false
-				break
-			case 'w':
-				player.velocity.y = -15
 				break
 		}
 	})

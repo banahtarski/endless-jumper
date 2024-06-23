@@ -36,4 +36,8 @@
         stop (){
             this.velocity.x = 0
         }
+
+        goUp (){
+            this.velocity.y = -8
+        }
 	}
