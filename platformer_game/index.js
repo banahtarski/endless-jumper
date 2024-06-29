@@ -5,7 +5,7 @@ const c = canvas.getContext ('2d')
 
 // dodela vrednosti poljima height i width objekta canvas
 canvas.width = 675
-canvas.height = 1200
+canvas.height = 1250
 
 const gravity = 0.1 // definisanje konstante gravity
 
@@ -16,7 +16,7 @@ const player = new Player( {
 })
 
 // definisanje instance klase Platform
-const platformSpawner = new PlatformSpawner()
+const platformSpawner = new PlatformSpawner(canvas.height)
 
 // definisanje konstante keys (tipa objekat) pomocu objekata tj polja a i d tipa boolean
 const keys = { //objekat keys koji je jednak instanci neimenovane klase 

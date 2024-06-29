@@ -1,8 +1,8 @@
 class Platform {
-    constructor() {
+    constructor(yInitial) {
         this.position = {
             x: Math.floor(Math.random() * 400),
-            y: 0
+            y: yInitial
         }
         this.platformSpeed = 1
         this.height = 30

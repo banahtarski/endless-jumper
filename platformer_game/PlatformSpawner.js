@@ -1,15 +1,22 @@
 class PlatformSpawner {
-    constructor() {
-        this.platformDistance = 200
-        this.spawnTime = 2 
-        this.platform =  new Platform ()
-    }
+    constructor(height) {
+        this.height = height
+        this.numberOfPlatforms = Math.floor(height/240)
+        this.platforms = []
 
-    draw (){
-        this.platform.draw()
+        for (let i=0; i<this.numberOfPlatforms; i++) {
+            let yInitial = 250*i
+            this.platforms.push(new Platform(yInitial))
+        }
     }
 
     update (){
-        this.platform.update()
+        for (let i = 0; i < this.numberOfPlatforms; i++) {
+            this.platforms[i].update();
+        }
+        if (this.platforms[this.platforms.length - 1].position.y > this.height) {
+            this.platforms.pop();
+            this.platforms.unshift(new Platform(0));
+        }
     }
 }
